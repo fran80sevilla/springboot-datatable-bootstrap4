@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<!-- la raiz es template, entramos en el directorio/nombrePlantilla :: nombreFragmento -->
+<style>
+	table tbody tr td, table tbody tr th{
+		text-align:center !important;
+		/* esto centra las palabras justo en medio de la celda */
+		vertical-align: middle !important;
+	}
+    tbody tr:hover{
+       background: #dee2e6 !important;
+    }  
+</style>
+<head th:replace="layout/layout :: head-fr"></head>
+<body>
+	<div class="container contenedor mt-3">
+	<div class="mb-3">
+		<a role="button" class="btn btn-outline-primary" th:href="@{/}">Volver al Home</a> <a
+			role="button" class="btn btn-outline-primary" th:href="@{/form-cliente}">Crear un
+			cliente</a>
+	</div>
+		<h4 class="list-group-item" th:text="${ titulo }">titulo lista</h4>
+		<!-- tabla -->
+		<table class="table table-striped">
+			<thead>
+				<tr style="text-align:center;">
+					<th scope="col">ID</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Apellidos</th>
+					<th scope="col">Email</th>
+					<th scope="col">Fecha de Creación</th>
+					<th scope="col">Editar Cliente</th>
+					<th scope="col">Eliminar Cliente</th>
+				</tr>
+			</thead>
+			<tbody>
+			<!-- foreach de toda la vida con tymeleaf -->
+				<tr th:each="temp : ${ listaClientes }" style="text-align:center;">
+					<th scope="row" th:text="${temp.id}"></th>
+					<td th:text="${temp.nombre}">El nombre del cliente</td>
+					<td th:text="${temp.apellidos}">Apellidos cliente</td>
+					<td th:text="${temp.email}">Email cliente</td>
+					<!-- formateamos fecha -->
+					<!-- <td th:text="${#dates.format(temp.createdAt, 'MM-yyyy')}">fecha creacion</td> -->
+					<td th:text="${temp.createAt}">fecha creacion</td>
+					<td>
+						<div class="alert alert-primary" role="alert">
+							<a th:href="@{/editar-cliente/} + ${temp.id}" class="alert-link" th:text="'editar'"></a>
+						</div>
+					</td>
+					<td>
+						<div class="alert alert-danger" role="alert">
+							<a th:href="@{/eliminar-cliente/} + ${temp.id}" class="alert-link" th:text="'eliminar'"
+								onclick="return confirm('Está seguro que desea eliminar el cliente seleccionado?');"></a>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+<!-- aqui tenemos un fragment -->
+<footer th:replace="layout/layout :: footer-fr"></footer>
+</body>
+</html>

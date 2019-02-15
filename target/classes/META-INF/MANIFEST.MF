@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: 5springboot-jpa-crud-repository
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: Fran
+Implementation-Vendor-Id: com.fran.jpa-crud-repository.app
+Build-Jdk: 1.8.0_51
+Implementation-URL: http://projects.spring.io/spring-boot/5springboot-
+ jpa-crud-repository/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+

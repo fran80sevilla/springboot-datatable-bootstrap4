@@ -1,0 +1,6 @@
+com\fran\springbootjpacrudrepository\app\controller\ClienteController.class
+com\fran\springbootjpacrudrepository\app\model\entity\Cliente.class
+com\fran\springbootjpacrudrepository\app\model\dao\IClienteRepository.class
+com\fran\springbootjpacrudrepository\app\model\service\ClienteServiceImpl.class
+com\fran\springbootjpacrudrepository\app\Application.class
+com\fran\springbootjpacrudrepository\app\model\service\IClienteService.class

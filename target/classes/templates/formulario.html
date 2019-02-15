@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+<meta charset='utf-8' name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<title>Home</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous" />
+<style>
+.error-validacion {
+	color: red;
+	font-weight: bold;
+}
+
+form{
+	overflow-x: auto;
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div style="margin-top: 15px;">
+			<h4 ht:text="${tituloFormulario}">Formulario de Clientes</h4>
+		</div>
+
+		<!-- el action contiene la ruta que procesa el formulario en nuestro metodo POST del Controller
+ 		el object es el objeto que se va a crear enviado desde el Controller en el GET -->
+		<form th:action="@{/form-cliente}" th:object="${cliente}" method="post" id="miForm">
+			<div class="form-group">
+				<table class="table table-reaped">
+					<tr>
+						<!-- si nos referimos a la propiedad del objeto, debera ir precedido por asterisco -->
+						<td><label>Nombre</label> <input type="text" class="form-control"
+							placeholder="Inserte nombre" th:field="*{nombre}" /> <small class="error-validacion"
+							th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"
+							th:errorclass="'form-control alert-danger'"></small></td>
+					</tr>
+					<tr>
+						<td><label>Apellidos</label> <input type="text" class="form-control"
+							placeholder="Inserte apellidos" th:field="*{apellidos}" /> <small class="error-validacion"
+							th:if="${#fields.hasErrors('apellidos')}" th:errors="*{apellidos}"
+							th:errorclass="'form-control alert-danger'"></small></td>
+					</tr>
+					<tr>
+						<td><label>email</label> <input class="form-control" type="email"
+							placeholder="Inserte email" th:field="*{email}" /> <small class="error-validacion"
+							th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+							th:errorclass="'form-control alert-danger'"></small></td>
+					</tr>
+					<tr>
+						<td>
+							<button type="submit" class="btn btn-outline-info btn-block" style="margin-top: 10px;">Submit/Aceptar</button>
+							<a role="button" th:href="@{/listar-clientes}" class="btn btn-outline-primary btn-block">Cancelar</a>
+
+							<button type="button" class="btn btn-outline-secondary btn-block" style="margin-top: 10px;"
+								onclick="limpiar()">Limpiar campos</button>
+						</td>
+					</tr>
+				</table>
+				<!-- elID es auto_increment, lo ponemos antes de la finalizacion del form como hidden -->
+				<input type="hidden" th:field="*{id}" />
+			</div>
+
+		</form>
+
+	</div>
+	<script>
+		function limpiar() {
+			document.getElementById("miForm").reset();
+		}
+	</script>
+<footer th:replace="layout/layout :: footer-fr"></footer></body>
+</html>
