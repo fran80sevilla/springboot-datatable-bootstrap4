@@ -9,7 +9,7 @@
 
 <!-- mensajes FLASH en caso de errores, exito en transacciones. Se mostraran brevemente cuando se realice una accion. 
 Desaparecen tras cerrar la sesion de la transaccion  -->
-<!-- guardar/eliminar: Sus metodos se deben modificar en el Controller -->
+<!-- ver flash.addFlashAttribute del controlador -->
 <div class="alert alert-success" th:if="${exito != null}" th:text="${exito}"></div>
 <div class="alert alert-danger" th:if="${error != null}" th:text="${error}"></div>
 <div class="alert alert-info" th:if="${info != null}" th:text="${info}"></div>
@@ -25,7 +25,6 @@ Desaparecen tras cerrar la sesion de la transaccion  -->
 			<h3 style="color:white;">Footer</h3>
 			<p>fragment</p>
 		</div>
-
 	</footer>
 </div>
 </html>
